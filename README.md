@@ -311,3 +311,10 @@ An interpretation might be that the abstraction during data modeling may have go
   from manufacturers to certificates is broken.
 * Certificates themselves don't consistently link to a manufacturer.
 * Device certificates are not returned by the certificates endpoint (!).
+
+#### 11. Basic UDI-DIs Can Be Linked To System / Procedure Pack Producers, But The Key Is Named `manufacturer`
+
+A device (or rather, Basic UDI-DI), can be "produced" by an entity which is not a manufacturer, but a System /
+Procedure Pack Producer.
+
+This is however not reflected in the data, as the system producer is listed under the key `manufacturer`.
