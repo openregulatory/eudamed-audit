@@ -280,3 +280,23 @@ example,`a57126d4-43d4-46fd-b89e-7b56fbc79d8d`, none of these seem to exist.
 
 This is very concerning as this inconsistency in the data might be evidence that the entire importers dataset
 is broken as it points to "shadow manufacturers".
+
+#### 10. Data Models Contain Keys Which Don't Make Rational Sense
+
+| Type          | Severity |
+|---------------|----------|
+| Inconsistency | Medium   |
+
+Many data models contain keys which they don't need from a real-world standpoint. One example is the
+`importers` key. In the context of the MDR, only manufacturers can (optionally) have importers.
+
+However, Eudamed stores the `importers` key for all sorts of entities which have no need whatsoever to be
+linked to importers:
+
+* System producers - it seems these don't need importers?
+* Notified bodies - why would they have importers?
+* Authorized representatives - these also don't need importers
+* Importers themselves (???) - how can an importer have another importer?!
+
+An interpretation might be that the abstraction during data modeling may have gone (way) too far - a generic
+"Economic Operator" was abstracted, which led to every entity now being linked to "importers".
