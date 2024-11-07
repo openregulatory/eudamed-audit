@@ -89,7 +89,7 @@ certificates are simply missing.
 * **Missing data:** Basic UDI-DI entries might return certificates which don't seem to exist in other
   endpoints and can neither be queried by `uuid` nor `certificateNumber`.
 
-#### 2. Certificate Data Is Returned Twice
+#### 2. Duplicate Certificate Data
 
 | Type               | Severity |
 |--------------------|----------|
