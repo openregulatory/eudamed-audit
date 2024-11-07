@@ -86,8 +86,8 @@ certificates are simply missing.
 
 * **Duplication:** Basic UDI-DI entries might return many different `uuid`s which all relate to the same
   certificate
-* **Missing data:** Basic UDI-DI entries might return certificates which don't seem to exist in other endpoints
-  and can neither be queried by `uuid` nor `certificateNumber`.
+* **Missing data:** Basic UDI-DI entries might return certificates which don't seem to exist in other
+  endpoints and can neither be queried by `uuid` nor `certificateNumber`.
 
 #### 2. Certificate Data Is Returned Twice
 
@@ -244,3 +244,39 @@ entries being `<tr>` (and its nested `<td>`) HTML elements instead of `<a>` elem
 practices.
 
 It is likely that only a very inexperienced web developer would write HTML in this way.
+
+#### 9. Manufacturers In Importer Data Don't Exist
+
+| Type          | Severity |
+|---------------|----------|
+| Inconsistency | High     |
+
+When querying the endpoint for importers, a list of manufacturers is returned which likely should resemble the
+list of manufacturers which are associated with each importer:
+
+``` json
+{
+  "nonEuManufacturers": [
+    {
+      "actor": null,
+      "endDate": "2029-12-31T00:00:00",
+      "relatedActorAddress": "1805  Honggao Road jiaxing",
+      "relatedActorCountryIsoCode": "CN",
+      "relatedActorEmail": "sidonia_dong@gri-china.com",
+      "relatedActorName": "GRI Medical & Electronic Technology Co., Ltd.",
+      "relatedActorPhone": "+86 057383617397",
+      "relatedActorSrn": "CN-MF-000004203",
+      "startDate": "2021-05-14T00:00:00",
+      "ulid": "01F5MX4Y6DBVJTV0SW5DZ209WR",
+      "uuid": "a57126d4-43d4-46fd-b89e-7b56fbc79d8d"
+    }
+  ]
+  // Other keys ommitted
+}
+```
+
+However, when querying the manufacturer endpoint for each of these manufacturers by uuid (in the above
+example,`a57126d4-43d4-46fd-b89e-7b56fbc79d8d`, none of these seem to exist.
+
+This is very concerning as this inconsistency in the data might be evidence that the entire importers dataset
+is broken as it points to "shadow manufacturers".
