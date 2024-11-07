@@ -300,3 +300,14 @@ linked to importers:
 
 An interpretation might be that the abstraction during data modeling may have gone (way) too far - a generic
 "Economic Operator" was abstracted, which led to every entity now being linked to "importers".
+
+#### 11. Certificate Relations Are Broken
+
+| Type          | Severity |
+|---------------|----------|
+| Inconsistency | High     |
+
+* The manufacturers data model has a "certificates" key, but it's always empty. It seems that the relation
+  from manufacturers to certificates is broken.
+* Certificates themselves don't consistently link to a manufacturer.
+* Device certificates are not returned by the certificates endpoint (!).
