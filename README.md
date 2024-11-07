@@ -157,6 +157,31 @@ Many uuids in nested keys are named arbitrarily, going against programming best 
 `authorisedRepresentativeUuid` for authorized representatives and `validatorUuid` for competent
 authorities. The keys should be named `uuid` instead.
 
+Example of competent authority data for an authorized representative:
+
+``` json
+{
+  "validatorEmail": "contact.eudamed@ansm.sante.fr",
+  "validatorName": "Agence Nationale de Sécurité du Médicament et des Produits de Santé",
+  "validatorSrn": "FR-CA-008",
+  "validatorTelephone": "+ 33 (1) 5587 3000",
+  "validatorUuid": "5933a947-5053-4da3-9f96-207060ead24d",
+  // Other keys ommitted
+}
+```
+
+Instead, this data should look as follows:
+
+``` json
+{
+  "validator": {
+    "uuid": "5933a947-5053-4da3-9f96-207060ead24d",
+    "email": "contact.eudamed@ansm.sante.fr"
+    // etc.
+  }
+}
+```
+
 #### 5. Basic UDI-DI Data Is Kept Separate From Device Data With No Relation
 
 | Type          | Severity |
